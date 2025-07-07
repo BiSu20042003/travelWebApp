@@ -1,0 +1,30 @@
+<style>
+  .footer{
+    position: absolute;
+    bottom: 0;
+  }
+</style>
+ <% layout("/layouts/boilerplate") %>
+<body style="background-color: rgb(110, 110, 109);">
+<div style="display: flex; width: 80vw;  justify-content: center;"  >
+    <form   class="needs-validation login-form" novalidate action="/user/login" method="POST">
+
+  <div class="loginDiv">
+   <div class="form-group ">
+    <input required type="text" class="form-control" name="username" id="username" placeholder="username">
+    <div class="invalid-feedback">Username must not be empty </div>
+  </div>
+    <div class="form-group ">
+    <input required type="password" class="form-control"  name="password" id="password" placeholder="password" autocomplete="off">
+    <div class="invalid-feedback">password must not be empty </div>
+  </div>
+  <a href="/user/forgot">Forgot Password?</a>
+
+
+  </div>
+    <br> 
+  <p><u>Don't have account?</u> <b style="background-color: burlywood; border-radius: 6px; padding-bottom: 2px; padding-left: 2px; padding-right: 2px;"><a href="/user/signup">Signup</a></b></p>
+   <button type="submit" class="btn btn-outline-success submitadd " style="width: 40vw;">Login</button>
+</form>
+</div>
+</body>

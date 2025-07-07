@@ -1,0 +1,23 @@
+<style>
+  .footer{
+    position: absolute;
+    bottom: 0;
+  }
+</style>
+
+<% layout("/layouts/boilerplate") %>
+<body>
+  <h2>📧 A verification code was sent to your email: <%= email %></h2>
+  <p>Waiting for email to be verified...</p>
+   <form action="/user/verify-email" method="POST">
+        <input type="hidden" name="email" value="<%= email %>">
+        <div class="form-group">
+            <label for="code">Enter 3-digit verification code:</label>
+            <input type="text" id="code" name="code" maxlength="3" required 
+                   pattern="\d{3}" title="Please enter a 3-digit number" autocomplete="off">
+        </div>
+        
+        <button type="submit">Verify Email</button>
+    </form>
+</body>
+

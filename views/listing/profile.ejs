@@ -1,0 +1,37 @@
+<style>
+    .footer{
+        position: absolute;
+        bottom: 0;
+    }
+</style>
+
+<% layout("/layouts/boilerplate") %>
+
+<body>
+    <div class=" newPlace" style="width: 50vw; position: absolute; left: 20%;">
+    <form action="/user/profile" novalidate class="needs-validation" method="POST" >
+  <div class="row" style="display: flex; justify-content: space-between; padding-left: 1.5vw; padding-right: 1.5vw;">
+    <div class="form-group" style="width: 40%;">
+    <label  for="firstName">First Name</label>
+    <input required type="text" class="form-control" name="firstName" id="firstName" placeholder="first name">
+    <div class="invalid-feedback">First name is required </div>
+  </div>
+    <div class="form-group" style="width: 40%;">
+    <label for="lastName"> Last Name</label>
+    <input  type="text" class="form-control" name="lastName" id="lastName" placeholder="last name">
+  </div>
+  </div>
+  <br> 
+
+   <div >
+    <label for="phone">Mobile No.:</label>
+    <input type="number" class="form-control" name="phone" id="phone" >
+  </div><br> 
+    <div class="form-group">
+    <label for="address">Address:</label>
+    <textarea class="form-control" name="address" id="address"></textarea>
+  </div> <br>
+   <button type="submit" class="btn submitadd ">Submit</button>
+</form>
+</div>
+</body>

@@ -1,0 +1,50 @@
+<% layout("/layouts/boilerplate") %>
+<style>
+    .addlist:hover{
+        transition: transform 0.5s ease;
+        transform: scale(1.1);
+        border: solid 2px;
+    }   
+</style>
+<% if(allList.length<=7){ %>
+    <style> 
+    .footer{
+    position: absolute;
+    bottom: 0;
+  }
+    </style>
+    <% } %>
+
+<body style="background-color: #F8F9FA;">
+      <div class="row row-cols-lg-6 card-link indexlist"  style="margin-left: 2vw; margin-right: 2vw;">
+                    <% for(let ele of allList) {%>
+ <a class="indexlink"  style="text-decoration: none; color: black;"  href="/listing/<%=ele._id %> ">
+    <div class="card list-card " style="width: 12rem; margin-top: 2vh; ">
+        <img style="height: 12.5rem ;" class="card-img-top list-img" src=<%= ele.image.url %> alt="image" />
+        <div class="card-body">
+            <p class="card-text">
+                <b><%= ele.title %></b> <br>
+                &#8377; <%= ele.price.toLocaleString("en-IN")%>/- night
+            </p>
+        </div>
+    </div>
+</a>
+
+<% } %> 
+<% if( prevRoute !=="/listing/search-list" ){ %>
+ <a  style="text-decoration: none;"  href="/listing/new">
+    <div class="card list-card addlist" style="width: 12rem; margin-top: 2vh; ">
+        <img style="height: 12.5rem ;" class="card-img-top list-img" src="https://res.cloudinary.com/dzvbhall2/image/upload/v1751266317/plus_fhdpig.jpg" />
+        <div class="card-body" style="display: flex; justify-content: center;">
+            <p class="card-text">
+                <b style="color:#fe424d ;">Become a host</b> <br>
+            </p>
+        </div>
+    </div>
+</a>
+<% } %>
+
+    </div>       
+    
+        
+</body>

@@ -1,0 +1,23 @@
+<style>
+  .footer{
+    position: absolute;
+    bottom: 0;
+  }
+</style>
+
+<% layout("/layouts/boilerplate") %>
+<body>
+  <h2>📧 A verification code was sent to your email: <%= email %>to change your password</h2>
+  <p>Waiting for OTP to be verified...</p>
+   <form action="/user/verify-pass/<%=password%>" method="POST">
+        <input type="hidden" name="email" value="<%= email %>">
+        <div class="form-group">
+            <label for="code">Enter 3-digit verification code:</label>
+            <input type="text" id="code" name="code" maxlength="3" required 
+                   pattern="\d{3}" title="Please enter a 3-digit number" autocomplete="off">
+        </div>
+        
+        <button type="submit">Change Password</button>
+    </form>
+</body>
+

@@ -1,0 +1,41 @@
+<style>
+  .footer{
+    position: absolute;
+    bottom: 0;
+  }
+</style>
+<% layout("/layouts/boilerplate") %>
+<body style="background-color: rgb(110, 110, 109);">
+<div class="col-7 offset-2 " style="margin-top: 3vh;">
+    <form action="/user/signup" method="POST" novalidate class="needs-validation" >
+  <div class="form-group ">
+    <label  for="title">Email</label>
+    <input required type="text" class="form-control" name="email" id="email" placeholder="Enter your email id">
+    <% if(typeof error!=="undefined" && Decide===1){ %>
+      <p style="color: red;"><%= error %></p>
+      <% } %>
+    <div class="invalid-feedback">Email should not be empty</div>
+  </div> <br>
+
+  <div >
+   <div class="form-group">
+    <label for="username">Username</label>
+    <input required type="text" class="form-control" name="username" id="username" placeholder="Choose username">
+    <% if(typeof error!=="undefined" && Decide===2){ %>
+      <p style="color: red;"><%= error %></p>
+      <% } %>
+    <div class="invalid-feedback">Usename should not be empty</div>
+  </div><br> 
+    <div class="form-group ">
+    <label for="password">Password</label>
+    <input required type="password" class="form-control"  name="password" id="password" placeholder="Password" >
+    <div class="valid-feedback">Looks Strong password</div>
+  </div>
+
+
+  </div>
+    <br> 
+   <button type="submit" class="btn submitadd" style="height: 6vh;">SignUp</button>
+</form>
+</div>
+</body>

@@ -1,0 +1,78 @@
+<% layout("/layouts/boilerplate") %>
+<body >
+    <div style="height: 75%; width: 100%; display: flex; flex-direction:column; align-items: center;">
+    <h2 style="font-size: 2vw; margin-top: 3vh;">Virtual visit of <i style="color: #fe424d;"><%= singleList.title %></i> </h2>
+    
+        <div class="card detail-card "  >
+        <img class="card-img-top detail-img" src=<%= singleList.image.url %> alt="image" />
+        <div class="card-body">
+            <p class="card-text">
+                <b style="color: #fe424d;"><%= singleList.title %>  </b> <i> Owned by <b> <%= singleList.owner.username  %></b></i>
+             <br></br> 
+                <i class="descp">
+                    <%= singleList.description %>
+                </i> <br>
+                &#8377; <b><%= singleList.price.toLocaleString("en-IN")%></b> /- night <br><br>
+                <%= singleList.location %> <br>
+                <%= singleList.country %> 
+                  <a  class="deleteform btn btn-outline-success delete"
+                   href="https://www.google.com/maps/search/<%=singleList.title %>/@22.5399775,88.3343501,17z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI1MDYxNi4wIKXMDSoASAFQAw%3D%3D" >
+                     Location
+                </a>
+            </p>
+        </div>
+
+    </div>
+           <% if(currUser && currUser._id.equals(singleList.owner._id)){ %>
+    <div class="editDelete row ">
+        <a class="btn btn-info editbtn" href="/listing/<%=singleList._id %>/edit">
+        Edit Details
+    </a>
+       <a href="/listing/<%=singleList._id %>/delete" class="deleteform btn btn-outline-danger delete">
+        Delete
+       </a>
+       
+    </div>
+      <% } %>
+  
+ 
+    <hr>
+    <div class=" mb-3 form-group ">
+        <h3 style="color: #c0e617; font-size: 3vw;">Write a Review</h3>
+        <form class="needs-validation" novalidate action="/listing/<%=singleList._id %>/review" method="post">
+        <label for="rating" >Rating: &nbsp;&nbsp;</label>
+        <input required type="range" name="review[rating]" id="rating" min="1" max="5" style="width: 15vw;">
+        <br>
+
+        <label for="comment">Write Your comments</label><br>
+        <textarea required name="review[comment]" id="comment" rows="3" style="border-radius: 5px; border-color: #fe424d; width: 35vw;" ></textarea>
+        <div class="invalid-feedback"> Write some comments</div>
+        <br>
+        <button class="btn btn-outline-success ">Submit</button>
+        </form>
+    </div>
+    <hr>
+    <% if(singleList.reviews.length>0){ %>
+    <h3 style="color: #c0e617; font-size: 3vw;">All Reviews</h3>
+    <div class="row" style="width: 50%;  gap: 1vw; margin-bottom: 5vh; ">
+        
+            <% for(review of singleList.reviews){ %>
+             <div class="card review-card" >
+               <a style="position: absolute; top: 0px; right: 0.5vw; font-size: 1vw;" 
+                href="/listing/<%= singleList._id %>/delete-review/<%= review._id %>">
+                <i class="fa-solid fa-xmark"></i>
+               </a>
+                <p style="font-size: 1vw;"> 
+                    <b> <%= review.username %></b> <br>
+                        <%= review.rating  %> 
+                        <i class="fas fa-star"></i>
+                </p>
+                 <p style="font-size: 1vw;"><%= review.comment %></p>
+            </div>
+                <% } %>
+        
+   </div>
+   <% } %>
+    </div>
+    
+</body>

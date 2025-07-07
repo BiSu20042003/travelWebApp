@@ -1,0 +1,20 @@
+<% layout("/layouts/boilerplate") %>
+<% if( typeof willbeDeleted!=="undefined" &&  decide===444){ %>
+<div class="delete-list" style="display: flex; justify-content: center; position: relative; margin-top: 5vh; margin-bottom: 20vh;">
+    <div class="alert alert-danger" style="display: flex; position: relative; margin-left: 2vw; margin-right: 2vw; height: 10vh;" role="alert">
+        <h4 style="font-size: 1vw;"> <%= message %>   </h4><a style="position: absolute; right: 0.5vw; top: 0vh; margin-left: 2vw; font-size: 1.2vw;" href="/listing/home"><i class="fa-solid fa-xmark"></i></a>
+     <hr>
+        <div style="position: absolute; bottom: 0; right: 50%; gap: 2vw;"><a href="/listing/<%=willbeDeleted._id  %>/delete/confirm">Yes</a> <a  href="/listing/<%=willbeDeleted._id  %>">No</a></div>
+    </div>
+    
+</div>
+<% } %>
+
+<% if( decide===4){ %>
+<div class="row" style="display: flex; justify-content: center; position: relative; margin-top: 5vh; margin-bottom: 20vh;">
+    <div class="alert alert-danger" style="display: flex; margin-left: 2vw; margin-right: 2vw;" role="alert">
+        <h4 style="font-size: 1vw;"> <%= message %>   </h4><a style="position: absolute; right: 0.5vw; top: 0vh; margin-left: 2vw; font-size: 1.2vw;" href="/listing/home"><i class="fa-solid fa-xmark"></i></a>
+    </div>
+</div>
+<% } %>
+

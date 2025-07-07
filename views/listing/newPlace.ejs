@@ -1,0 +1,53 @@
+<% layout("/layouts/boilerplate") %>
+<body class="newPlace">
+    <h2>Add new Place</h2>
+     <div class="col-7 offset-2">
+    <form  action="/listing/added" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
+     
+  <div class="form-group">
+    
+    <label  for="title">Title</label>
+    <input required  type="text" class="form-control" name="title" id="title" placeholder="Title">
+    <div class="valid-feedback">title looks good</div>
+    <div class="invalid-feedback">title is required </div>
+  </div>
+
+   <br>
+    <div class="form-group">
+    <label for="description">Description</label>
+    <textarea required class="form-control" name="description" id="description" rows="3"></textarea>
+   <div class="valid-feedback">Description is elaborated </div>
+   <div class="invalid-feedback">Description is required </div>
+  </div>
+ <br> 
+  <div class="row">
+
+
+   <div class="form-group col-md-7">
+    <label for="location">Location</label>
+    <input required type="text" class="form-control" name="location" id="location" placeholder="Location">
+   <div class="invalid-feedback">Enter valid location</div>
+  </div><br> 
+    <div class="form-group col-md-5 ">
+    <label for="country">Country</label>
+    <input required type="text" class="form-control" name="country" id="country" placeholder="Country">
+   <div class="invalid-feedback">Enter country name </div>
+  </div>
+
+
+  </div>
+    <br> 
+    <div class="form-group">
+    <label for="image">Upload Image</label>
+    <input  type="file" class="form-control" name="image" id="image" placeholder="Upload image">
+   <div class="invalid-feedback">Upload a valid image </div>
+  </div>
+     <div >
+      <label for="price">Add Fare price</label>
+      <input required  class="form-control" name="price" id="price" >
+   <div class="invalid-feedback">Enter valid price</div>
+   </div>
+   <button type="submit" class="btn submitadd " style="margin-top: 2vh; margin-bottom: 2vh;">Add</button>
+</form>
+</div>
+</body>

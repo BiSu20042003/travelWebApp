@@ -1,0 +1,48 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+    <h1>Enter New Details</h1>
+    <div class="col-7 offset-2 newPlace">
+    <form action="/listing/<%=oldList._id %>/updatedList" novalidate class="needs-validation" method="POST" enctype="multipart/form-data">
+  <div class="form-group ">
+    <label  for="title">Edit Title</label>
+    <input required type="text" class="form-control" name="title" id="title" value="<%= oldList.title %>">
+    <div class="invalid-feedback">title is required </div>
+  </div> <br>
+    <div class="form-group">
+    <label for="description"> Edit Description</label>
+    <textarea required class="form-control" value="<%= oldList.description %>" name="description" id="description" rows="3"></textarea>
+    <div class="invalid-feedback">Description is required </div>
+  </div><br> 
+
+  <div class="row">
+
+
+   <div class="form-group col-md-7">
+    <label for="location">Location</label>
+    <input type="text" class="form-control" value="<%= oldList.location %>" name="location" id="location" >
+    <div class="invalid-feedback">location is required </div>
+  </div><br> 
+    <div class="form-group col-md-5 ">
+    <label for="country">Country</label>
+    <input type="text" class="form-control" value="<%=oldList.country%>" name="country" id="country" >
+    <div class="invalid-feedback">country is required </div>
+  </div>
+
+
+  </div>
+    <br> 
+    <div class="form-group">
+    <label for="image">Upload New Image</label>
+    <input required type="file" class="form-control" name="image" id="image" >
+    <div class="invalid-feedback">upload new image</div>
+  </div>
+     <div >
+
+      <label for="price">Edit Fare price</label>
+      <input required type="number" class="form-control" name="price" id="price" min="500">
+      <div class="invalid-feedback">Price must not empty </div>
+   </div>
+   <button type="submit" class="btn submitadd ">Submit</button>
+</form>
+</div>
+</body>
