@@ -20,7 +20,6 @@ const localStrategy= require("passport-local");
 const User = require("./models/userLogin.js");
 const UserDetail = require('./models/userDetails.js'); 
 const wrapAsync= require("./utils/wrapAsync.js");
-const ExpressError = require("./utils/ExpressError.js"); 
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 const {listingRoute,userRoute} = require("./utils/router.js")
