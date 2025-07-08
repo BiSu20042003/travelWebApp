@@ -48,7 +48,7 @@ const sessionOption = {
 
 app.use(session(sessionOption));
 app.use(flash());
-app.listen(8080,()=>{
+app.listen( process.env.PORT  || 8080,()=>{
     console.log("app listening");
 })
 async function main() {
