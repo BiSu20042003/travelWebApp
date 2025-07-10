@@ -10,6 +10,15 @@ const reviewSch =new mongoose.Schema({
     createdAt :{
         type: Date,
         default : Date.now()
+    },
+    helpful:{
+        type: Number,
+        default:0
+    } ,
+    notHelpful: {
+        type:Number,
+        default: 0
     }
+
 });
 module.exports = mongoose.model("Review", reviewSch);

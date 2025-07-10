@@ -105,7 +105,7 @@
     height: 50%;
     border: rgb(207, 205, 205) solid 2px;
     margin-top: 1.7vh;
-    box-shadow: 10px 10px 15px rgb(207, 205, 205);
+    box-shadow: 10px 10px 15px rgb(105, 43, 43);
     border-bottom-left-radius:40px ;
     border-top-left-radius:40px ;
     border-bottom-right-radius:40px ;
@@ -132,7 +132,7 @@
     padding-top: 2vh ;
     padding-left:2vw ;
     padding-bottom: 2vh;
-    font-size: 1vw;
+    font-size: 1.5vw;
     border:none
 }
 /* .innerSearch.active{
@@ -236,13 +236,14 @@
         height: 85%;
     }  
    .deleteform{
-    margin-top:1vh ;
-    order: 2;
-    width: 80%;
+    margin-top:1vh !important;
+    order: 2 !important;
+    width: 80% !important;
+    margin-right: 1.5vw !important;
    }
    .editbtn{
-    order: 1;
-    width: 80%;
+    order: 1 !important;
+    width: 80% !important;
    }
    .card-link{
     display: flex;
@@ -318,6 +319,7 @@
         left: 20% !important;
         width: 60vw !important;
    }
+   
  
 }
 @media(max-width:450px){
@@ -342,7 +344,7 @@
 }
 
 .review-card{
-    width: 45%;
+    width: 45% !important;
     display: flex;
     justify-content: center; 
     padding-left: 1vw; 

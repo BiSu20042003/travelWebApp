@@ -1,0 +1,28 @@
+<style>
+  .footer{
+    position: absolute;
+    bottom: 0;
+  }
+</style>
+ <% layout("/layouts/boilerplate") %>
+<body style="background-color: rgb(110, 110, 109);">
+<div style="display: flex; width: 80vw;  justify-content: center;"  >
+    <form   class="needs-validation login-form" novalidate action="/user/feedback" method="POST">
+
+  <div class="loginDiv">
+   <div class="form-group ">
+    <label for="subject">Subject name</label>
+    <input type="text" class="form-control" name="subject" id="subject" placeholder="write the subject name">
+  </div>
+    <div class="form-group ">
+      <label for="about">Write in details</label>
+    <textarea  required type="about" class="form-control"  name="about" id="about" placeholder="Share your experience or suggestions here.. " ></textarea>
+    <div class="invalid-feedback">Fill with some valuable suggestions </div>
+  </div>
+
+  </div>
+    <br> 
+   <button type="submit" class="btn btn-outline-success submitadd " style="width: 40vw;">Send</button>
+</form>
+</div>
+</body>

@@ -95,6 +95,11 @@ document.addEventListener("DOMContentLoaded", () => {
       suggestionBox.style.display = "none";
     }
   });
+
+
+//const newTheme = currentTheme==='light'? 'dark':'light';
+
+
 });
 
 function toggleDropdown(){
@@ -114,3 +119,35 @@ document.addEventListener('click',
     }
   }
 );
+
+(function(){
+ const savedTheme = localStorage.getItem('theme');
+ const htmlEl= document.documentElement;
+ if(savedTheme === 'dark' || savedTheme === 'light'){
+  htmlEl.setAttribute('data-bs-theme',savedTheme);
+  const toggleButton = document.getElementById('themeToggle');
+  if(toggleButton){
+    toggleButton.innerText = savedTheme === 'light'?'🌙 Dark':'☀️ Light';
+  }
+ }
+})()
+
+
+function toggleTheme(){
+  const toggleButton = document.getElementById('themeToggle');
+  const htmlEl= document.documentElement;
+  const currentTheme = htmlEl.getAttribute('data-bs-theme');
+  let newTheme;
+if(currentTheme==='light'){
+  newTheme='dark';
+}
+else newTheme = 'light';
+htmlEl.setAttribute('data-bs-theme',newTheme);
+if(newTheme==='light') toggleButton.innerHTML= '🌙 Dark';
+else toggleButton.innerHTML = '☀️ Light'
+
+localStorage.setItem('theme', newTheme);
+}
+
+
+

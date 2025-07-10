@@ -1,5 +1,6 @@
 const Listing= require('../models/list.js')
 const User= require('../models/userLogin.js')
+const Review = require('../models/review.js');
 const UserDetail = require("../models/userDetails.js")
 const {cloudinary} = require("../cloudConfig.js");
 const jwt = require('jsonwebtoken');
@@ -233,7 +234,6 @@ module.exports.forgotPass= async(req,res,next)=>{
             pass: process.env.EMAIL_PASS
         }
     });
-    console.log("6")
     const mailOptions = {
       from: process.env.EMAIL,
       to: email,
@@ -297,6 +297,7 @@ module.exports.addReview = async (req,res,next)=>{
         return;
     }
     let {_id}=req.params;
+    console.log(_id);
     // const ranUsername=faker.person.fullName();
     const reviewData={
         ...req.body.review,
@@ -373,4 +374,43 @@ module.exports.profile = async(req,res,next)=>{
     }
     res.redirect("/listing/home");
 }
-    
+
+module.exports.Liked = async(req,res,next)=>{
+    let {list_id,_id} = req.params;
+    const review = await Review.findById(_id);
+    let likeCount = review.helpful
+    review.helpful= likeCount+1;
+    await review.save();
+    req.flash("success","Review liked")
+    res.redirect(`/listing/${list_id}`);
+}
+module.exports.disLiked = async(req,res,next)=>{
+    let {list_id,_id} = req.params;
+    const review = await Review.findById(_id);
+    let dislikeCount = review.notHelpful
+    review.notHelpful= dislikeCount+1;
+    await review.save();
+    req.flash("success","Review disliked")
+    res.redirect(`/listing/${list_id}`);
+}
+
+module.exports.feedbackRender=(req,res)=>{
+    if(!req.isAuthenticated()){
+        req.flash("error","You must be logged in")
+        res.redirect("/user/login");
+        return
+    }
+    res.render("./listing/feedback.ejs");
+}
+module.exports.sendFeedback = async(req, res, next)=>{
+    if(!req.isAuthenticated()){
+        req.flash("error","You must be logged in")
+        res.redirect("/user/login");
+        return
+    }
+    let subject = encodeURIComponent(req.body.subject);
+    let msg = encodeURIComponent(req.body.about);
+    const toSend = process.env.EMAIL;
+    const mailTo = `mailto:${toSend}?subject=${subject}&body=${msg}`;
+    res.redirect(mailTo);  
+}

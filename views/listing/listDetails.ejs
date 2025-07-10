@@ -25,10 +25,10 @@
     </div>
            <% if(currUser && currUser._id.equals(singleList.owner._id)){ %>
     <div class="editDelete row ">
-        <a class="btn btn-info editbtn" href="/listing/<%=singleList._id %>/edit">
+        <a class="btn btn-info editbtn" style="width: 45%;  display: flex; justify-content: center; align-items: center;" href="/listing/<%=singleList._id %>/edit">
         Edit Details
     </a>
-       <a href="/listing/<%=singleList._id %>/delete" class="deleteform btn btn-outline-danger delete">
+       <a style="width: 45%;" href="/listing/<%=singleList._id %>/delete" class="deleteform btn btn-outline-danger delete">
         Delete
        </a>
        
@@ -38,15 +38,15 @@
  
     <hr>
     <div class=" mb-3 form-group ">
-        <h3 style="color: #c0e617; font-size: 3vw;">Write a Review</h3>
+        <h3 style="color: #c0e617; font-size: 3vw;">Leave a Review</h3>
         <form class="needs-validation" novalidate action="/listing/<%=singleList._id %>/review" method="post">
         <label for="rating" >Rating: &nbsp;&nbsp;</label>
         <input required type="range" name="review[rating]" id="rating" min="1" max="5" style="width: 15vw;">
         <br>
 
-        <label for="comment">Write Your comments</label><br>
+        <label for="comment">Write Your review</label><br>
         <textarea required name="review[comment]" id="comment" rows="3" style="border-radius: 5px; border-color: #fe424d; width: 35vw;" ></textarea>
-        <div class="invalid-feedback"> Write some comments</div>
+        <div class="invalid-feedback"> Write some comments </div>
         <br>
         <button class="btn btn-outline-success ">Submit</button>
         </form>
@@ -54,7 +54,7 @@
     <hr>
     <% if(singleList.reviews.length>0){ %>
     <h3 style="color: #c0e617; font-size: 3vw;">All Reviews</h3>
-    <div class="row" style="width: 50%;  gap: 1vw; margin-bottom: 5vh; ">
+    <div class="row g-3" style="width: 50%;  gap: 1vw; margin-bottom: 5vh; ">
         
             <% for(review of singleList.reviews){ %>
              <div class="card review-card" >
@@ -68,7 +68,12 @@
                         <i class="fas fa-star"></i>
                 </p>
                  <p style="font-size: 1vw;"><%= review.comment %></p>
+                 <div>
+                <a style="text-decoration: none; font-size: 1vw; color: rgb(56, 225, 56);" href="/user/<%= singleList._id %>/review/<%= review._id %>/liked">👍<%= review.helpful %> </a> &nbsp; &nbsp; &nbsp;
+                <a style="text-decoration: none; font-size: 1vw; color: red;"  href="/user/<%= singleList._id %>/review/<%= review._id %>/disliked">👎<%= review.notHelpful %></a>
             </div>
+            </div>
+            
                 <% } %>
         
    </div>

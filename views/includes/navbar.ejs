@@ -5,33 +5,32 @@
     
   }
 </style>
-<nav class="navbar navbar-expand-sm bg-body-light sticky-top moveing" style="background-color: rgb(255, 255, 255);">
+<nav class="navbar navbar-expand-sm bg-body-light sticky-top moveing bg-body-tertiary" style="background-color: rgb(255, 255, 255);">
     <div class="container-fluid ">
       <div class="navDiv  ">
         <p>
           <a style="font-size: 2vw; margin-right: 0; position: absolute; top:30%; left: 8%  ;" 
               class="navbar-brand" href="/listing/home">
-           <i class="fa-solid fa-hotel appIcon"></i>
+           <i style="position: absolute;" class="fa-solid fa-hotel appIcon"></i>
           </a>
         </p>
-        <p><a class="nav-link" style="color:#fe424d ; font-size: 1.5vw;position: absolute; top:50%; left: 1%;" aria-current="page" href="/listing/home">travel.com</a></p>
+        <p><a class="nav-link" style="color:#fe424d ; font-size: 1.5vw; font-weight: bold; position: absolute; top:50%; left: 2%;" aria-current="page" href="/listing/home">travel.com</a></p>
       </div>
       <div class="search ">
         <form class="searchBar" action="/listing/search-list" method="post">
           <input class="innerSearch" name="title" id="title" type="text" placeholder="Search destinations" required >
           <div style="height: 40px; width: 2px; background-color: rgb(222, 222, 222) ;"></div>
-          <input class="innerSearch" id="booking-date" style="display: flex;" placeholder="Add Dates"  type="date"  >
+          <input class="innerSearch" id="booking-date" style="display: flex; font-size: 1.15vw;" placeholder="Add Dates"  type="date"  >
           <div style="height: 40px; width: 2px; background-color: rgb(222, 222, 222) ;"></div>
           <div class="innerSearch" style="display: flex;">
-            <input type="number" min="1" max="30" class="innerSearch" style="width: 60%; height: 100%; padding-left: 1vw;" placeholder="Add guests">
-            
-            <div style="margin-left: 1.5vw; width: 20%; height: 100%; border-radius: 50%; background-color: #c72445; display: flex; justify-content: center; align-items: center;">
-              <button type="submit" style="border: none;"><i class="fa-solid fa-magnifying-glass" style="font-size: 150%;"></i></button>
+            <input type="number" min="1" max="30"  style="width: 60%; height: 90%; padding-left: 1vw; border: none; font-size: 1.15vw; border-bottom-left-radius:40px ;border-top-left-radius:40px ;border-bottom-right-radius:40px ;border-top-right-radius:40px ;" placeholder="Add guests">
+            <div style="margin-left: 1.5vw; width: 20%; height: 100%; border-radius: 50%;  display: flex; justify-content: center; align-items: center;">
+              <button type="submit" style="border: none; background: none;"><i  class="fa-solid fa-magnifying-glass" style="font-size: 150%;"></i></button>
             </div>
           </div>
         </form>
       </div>
-      <div class=" btnSignup"  id="navbarNavAltMarkup">
+      <div class="btnSignup"  id="navbarNavAltMarkup">
         <div class="navbar-nav">
         <% if(!currUser){ %>
          <form action="/user/login" method="get">
@@ -57,6 +56,9 @@
         </div>
       </div>
     </div>
+    <button  id="themeToggle" class="btn  btn-outline-secondary ms auto" style="position: absolute; left: 2%; top: 5%; width: 4rem; padding: 0;" onclick="toggleTheme()">
+      &#127769;Dark
+    </button>
 </nav>
 <% if(currUser){ %>
 <div 
@@ -72,8 +74,8 @@
    
   <a style="position: absolute; left:30%; top:10%" href="/user/profile">Edit profile <i class="fas fa-pen-to-square " style="font-size: 1vw;"></i></a>
   <div style="margin-top: 7vh; margin-left: 2vw; margin-right: 2vw;"></div>
-   <p style=" margin-left: 2vw; margin-right: 2vw;">Name: <% if(userDetails && userDetails.fullName){ %> <%= userDetails.fullName.firstName%> <% } %> </p>
-   <p style=" margin-left: 2vw; margin-right: 2vw;">Mobile No.: <% if(userDetails && userDetails.phone){ %> <%= userDetails.phone%> <% } %></p>  
-   <p style=" margin-left: 2vw; margin-right: 2vw;" >Address: <% if(userDetails && userDetails.address){ %> <%= userDetails.address%> <% } %></p>  
+   <p style=" margin-left: 2vw; margin-right: 2vw; color: #fe424d;">Name: <% if(userDetails && userDetails.fullName){ %> <%= userDetails.fullName.firstName%> <% } %> </p>
+   <p style=" margin-left: 2vw; margin-right: 2vw; color: #fe424d;">Mobile No.: <% if(userDetails && userDetails.phone){ %> <%= userDetails.phone%> <% } %></p>  
+   <p style=" margin-left: 2vw; margin-right: 2vw; color: #fe424d;" >Address: <% if(userDetails && userDetails.address){ %> <%= userDetails.address%> <% } %></p>  
 </div>
 <% } %>

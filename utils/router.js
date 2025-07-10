@@ -79,5 +79,12 @@ userRoute.route("/forgotpass")
 .post(wrapAsync(Listingcontrol.forgotPass));
 userRoute.route("/verify-pass/:password")
 .post(wrapAsync(Listingcontrol.verifyPass))
+userRoute.route("/:list_id/review/:_id/liked")
+.get(Listingcontrol.Liked);
+userRoute.route("/:list_id/review/:_id/disliked")
+.get(Listingcontrol.disLiked);
+userRoute.route("/feedback")
+.get(Listingcontrol.feedbackRender)
+.post(Listingcontrol.sendFeedback);
 
 module.exports = {listingRoute, userRoute}

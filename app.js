@@ -53,7 +53,7 @@ app.listen( process.env.PORT  || 8080,()=>{
 async function main() {
   await mongoose.connect(process.env.MONGO_ATLAS);
 }
-main().then().catch();
+main().then(console.log("db connected")).catch(console.log("db connection problem"));
 app.use(passport.initialize()); 
 app.use(passport.session());
 passport.use(new localStrategy(User.authenticate()));
